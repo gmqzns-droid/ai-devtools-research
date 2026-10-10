@@ -1,0 +1,56 @@
+[
+ {
+  "prompt": "v1",
+  "model": "GigaChat-2",
+  "n": 100,
+  "kind_acc": 0.85,
+  "topic_acc": 0.44,
+  "both_acc": 0.4,
+  "unparsed": 1
+ },
+ {
+  "prompt": "v2",
+  "model": "GigaChat-2",
+  "n": 100,
+  "kind_acc": 0.81,
+  "topic_acc": 0.53,
+  "both_acc": 0.48,
+  "unparsed": 7
+ },
+ {
+  "prompt": "v2",
+  "model": "GigaChat-2-Pro",
+  "n": 100,
+  "kind_acc": 0.88,
+  "topic_acc": 0.69,
+  "both_acc": 0.62,
+  "unparsed": 2
+ },
+ {
+  "prompt": "v3",
+  "model": "GigaChat-2",
+  "n": 100,
+  "kind_acc": 0.82,
+  "topic_acc": 0.48,
+  "both_acc": 0.45,
+  "unparsed": 6
+ },
+ {
+  "prompt": "v3",
+  "model": "GigaChat-2-Max",
+  "n": 100,
+  "kind_acc": 0.94,
+  "topic_acc": 0.77,
+  "both_acc": 0.74,
+  "unparsed": 1
+ },
+ {
+  "prompt": "v3",
+  "model": "GigaChat-2-Pro",
+  "n": 100,
+  "kind_acc": 0.92,
+  "topic_acc": 0.67,
+  "both_acc": 0.64,
+  "unparsed": 2
+ }
+]

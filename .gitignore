@@ -1,0 +1,9 @@
+# ключ GigaChat, никогда не выкладывать
+.env
+# база с полными текстами обращений: 10 МБ, пересобирается скриптом fetch_issues.py
+issues.db
+issues.db-journal
+# сертификат скачивается скриптом
+russian_trusted_root_ca.pem
+__pycache__/
+.DS_Store

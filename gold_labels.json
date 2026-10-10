@@ -1,0 +1,1002 @@
+[
+ {
+  "pos": 1,
+  "issue_id": 5211133652,
+  "repo": "google-gemini/gemini-cli",
+  "number": 28943,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 2,
+  "issue_id": 4815329435,
+  "repo": "continuedev/continue",
+  "number": 12946,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 3,
+  "issue_id": 5778153781,
+  "repo": "cline/cline",
+  "number": 14977,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 4,
+  "issue_id": 4708001008,
+  "repo": "Aider-AI/aider",
+  "number": 5302,
+  "kind": "feature",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 5,
+  "issue_id": 5777570484,
+  "repo": "openai/codex",
+  "number": 52544,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 6,
+  "issue_id": 5772857745,
+  "repo": "openai/codex",
+  "number": 52408,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 7,
+  "issue_id": 5773931619,
+  "repo": "openai/codex",
+  "number": 52431,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 8,
+  "issue_id": 5783169254,
+  "repo": "openai/codex",
+  "number": 52673,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 9,
+  "issue_id": 5540176086,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29442,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 10,
+  "issue_id": 4305575101,
+  "repo": "Aider-AI/aider",
+  "number": 5063,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 11,
+  "issue_id": 5775661645,
+  "repo": "openai/codex",
+  "number": 52493,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 12,
+  "issue_id": 5633375851,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29556,
+  "kind": "bug",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "config"
+ },
+ {
+  "pos": 13,
+  "issue_id": 5532612322,
+  "repo": "cline/cline",
+  "number": 14365,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 14,
+  "issue_id": 3975131675,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 11693,
+  "kind": "feature",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 15,
+  "issue_id": 5192953163,
+  "repo": "Aider-AI/aider",
+  "number": 5596,
+  "kind": "feature",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 16,
+  "issue_id": 4353224194,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12227,
+  "kind": "feature",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "config"
+ },
+ {
+  "pos": 17,
+  "issue_id": 5776152994,
+  "repo": "openai/codex",
+  "number": 52507,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 18,
+  "issue_id": 4362134253,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12250,
+  "kind": "feature",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 19,
+  "issue_id": 5440169224,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29306,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 20,
+  "issue_id": 5433397208,
+  "repo": "continuedev/continue",
+  "number": 13263,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 21,
+  "issue_id": 5196577796,
+  "repo": "google-gemini/gemini-cli",
+  "number": 28921,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 22,
+  "issue_id": 4554689613,
+  "repo": "Aider-AI/aider",
+  "number": 5204,
+  "kind": "feature",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "config"
+ },
+ {
+  "pos": 23,
+  "issue_id": 4789786081,
+  "repo": "Aider-AI/aider",
+  "number": 5382,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 24,
+  "issue_id": 5603248262,
+  "repo": "cline/cline",
+  "number": 14584,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 25,
+  "issue_id": 5334805960,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29182,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 26,
+  "issue_id": 5485697745,
+  "repo": "cline/cline",
+  "number": 14215,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 27,
+  "issue_id": 5237574323,
+  "repo": "continuedev/continue",
+  "number": 13190,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 28,
+  "issue_id": 5545326846,
+  "repo": "cline/cline",
+  "number": 14415,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 29,
+  "issue_id": 5468136700,
+  "repo": "cline/cline",
+  "number": 14163,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 30,
+  "issue_id": 5770412687,
+  "repo": "openai/codex",
+  "number": 52326,
+  "kind": "feature",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 31,
+  "issue_id": 5239405789,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29031,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 32,
+  "issue_id": 5440169232,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29308,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 33,
+  "issue_id": 5492420104,
+  "repo": "cline/cline",
+  "number": 14229,
+  "kind": "bug",
+  "topic": "billing_limits",
+  "labeled_by": "claude",
+  "topic_v3": "billing_limits"
+ },
+ {
+  "pos": 34,
+  "issue_id": 4665478109,
+  "repo": "continuedev/continue",
+  "number": 12631,
+  "kind": "question",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 35,
+  "issue_id": 4257781447,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12106,
+  "kind": "feature",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 36,
+  "issue_id": 5773318980,
+  "repo": "openai/codex",
+  "number": 52421,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 37,
+  "issue_id": 5776645957,
+  "repo": "openai/codex",
+  "number": 52522,
+  "kind": "bug",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 38,
+  "issue_id": 5785069637,
+  "repo": "openai/codex",
+  "number": 52705,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 39,
+  "issue_id": 5160913676,
+  "repo": "Aider-AI/aider",
+  "number": 5573,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 40,
+  "issue_id": 5695466544,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29624,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 41,
+  "issue_id": 5740595604,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29669,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 42,
+  "issue_id": 4870877845,
+  "repo": "Aider-AI/aider",
+  "number": 5450,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 43,
+  "issue_id": 5714606004,
+  "repo": "continuedev/continue",
+  "number": 13347,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 44,
+  "issue_id": 5551157071,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29461,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 45,
+  "issue_id": 4815367916,
+  "repo": "continuedev/continue",
+  "number": 12948,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 46,
+  "issue_id": 5755794581,
+  "repo": "openai/codex",
+  "number": 51949,
+  "kind": "bug",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 47,
+  "issue_id": 5756697200,
+  "repo": "openai/codex",
+  "number": 51966,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 48,
+  "issue_id": 5590949656,
+  "repo": "cline/cline",
+  "number": 14545,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 49,
+  "issue_id": 5775413115,
+  "repo": "openai/codex",
+  "number": 52476,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 50,
+  "issue_id": 5416939125,
+  "repo": "cline/cline",
+  "number": 14036,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 51,
+  "issue_id": 5144501515,
+  "repo": "google-gemini/gemini-cli",
+  "number": 28802,
+  "kind": "feature",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 52,
+  "issue_id": 4791648024,
+  "repo": "continuedev/continue",
+  "number": 12935,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 53,
+  "issue_id": 5761357233,
+  "repo": "openai/codex",
+  "number": 52082,
+  "kind": "bug",
+  "topic": "context_sessions",
+  "labeled_by": "claude",
+  "topic_v3": "context_sessions"
+ },
+ {
+  "pos": 54,
+  "issue_id": 4511037013,
+  "repo": "continuedev/continue",
+  "number": 12482,
+  "kind": "feature",
+  "topic": "docs",
+  "labeled_by": "claude",
+  "topic_v3": "docs"
+ },
+ {
+  "pos": 55,
+  "issue_id": 5550408761,
+  "repo": "cline/cline",
+  "number": 14444,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 56,
+  "issue_id": 5649032936,
+  "repo": "cline/cline",
+  "number": 14707,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 57,
+  "issue_id": 5339346279,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29189,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 58,
+  "issue_id": 4676816246,
+  "repo": "continuedev/continue",
+  "number": 12687,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 59,
+  "issue_id": 5637094072,
+  "repo": "cline/cline",
+  "number": 14663,
+  "kind": "bug",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 60,
+  "issue_id": 5104192663,
+  "repo": "continuedev/continue",
+  "number": 13114,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 61,
+  "issue_id": 4162043788,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12028,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 62,
+  "issue_id": 5678157530,
+  "repo": "cline/cline",
+  "number": 14777,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 63,
+  "issue_id": 4620489054,
+  "repo": "Aider-AI/aider",
+  "number": 5242,
+  "kind": "feature",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 64,
+  "issue_id": 5575546257,
+  "repo": "cline/cline",
+  "number": 14497,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 65,
+  "issue_id": 3975328111,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 11707,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 66,
+  "issue_id": 4626728576,
+  "repo": "continuedev/continue",
+  "number": 12582,
+  "kind": "question",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 67,
+  "issue_id": 4974154300,
+  "repo": "Aider-AI/aider",
+  "number": 5492,
+  "kind": "bug",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 68,
+  "issue_id": 4274705587,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12125,
+  "kind": "question",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 69,
+  "issue_id": 5775244764,
+  "repo": "openai/codex",
+  "number": 52467,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 70,
+  "issue_id": 4331566178,
+  "repo": "Aider-AI/aider",
+  "number": 5077,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 71,
+  "issue_id": 5670982690,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29595,
+  "kind": "feature",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 72,
+  "issue_id": 5503838804,
+  "repo": "Aider-AI/aider",
+  "number": 5733,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 73,
+  "issue_id": 5308372140,
+  "repo": "Aider-AI/aider",
+  "number": 5661,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 74,
+  "issue_id": 5003785647,
+  "repo": "continuedev/continue",
+  "number": 13051,
+  "kind": "bug",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 75,
+  "issue_id": 5645139625,
+  "repo": "Aider-AI/aider",
+  "number": 5790,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 76,
+  "issue_id": 4291924854,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12153,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ },
+ {
+  "pos": 77,
+  "issue_id": 4191588362,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12044,
+  "kind": "feature",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 78,
+  "issue_id": 4277601169,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12134,
+  "kind": "feature",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 79,
+  "issue_id": 5477976251,
+  "repo": "Aider-AI/aider",
+  "number": 5719,
+  "kind": "junk",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 80,
+  "issue_id": 5604339644,
+  "repo": "cline/cline",
+  "number": 14590,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 81,
+  "issue_id": 4905404605,
+  "repo": "Aider-AI/aider",
+  "number": 5468,
+  "kind": "question",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 82,
+  "issue_id": 5351278033,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29213,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 83,
+  "issue_id": 4161961071,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12026,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 84,
+  "issue_id": 4332096574,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12203,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 85,
+  "issue_id": 4197745804,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12047,
+  "kind": "feature",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 86,
+  "issue_id": 5402558688,
+  "repo": "continuedev/continue",
+  "number": 13249,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 87,
+  "issue_id": 4732151614,
+  "repo": "continuedev/continue",
+  "number": 12890,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 88,
+  "issue_id": 5409149591,
+  "repo": "cline/cline",
+  "number": 14026,
+  "kind": "bug",
+  "topic": "stability",
+  "labeled_by": "claude",
+  "topic_v3": "stability"
+ },
+ {
+  "pos": 89,
+  "issue_id": 5778913450,
+  "repo": "openai/codex",
+  "number": 52572,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 90,
+  "issue_id": 5766350793,
+  "repo": "openai/codex",
+  "number": 52192,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 91,
+  "issue_id": 5440219523,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29312,
+  "kind": "bug",
+  "topic": "other",
+  "labeled_by": "claude",
+  "topic_v3": "other"
+ },
+ {
+  "pos": 92,
+  "issue_id": 5411340099,
+  "repo": "google-gemini/gemini-cli",
+  "number": 29275,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 93,
+  "issue_id": 5653194449,
+  "repo": "cline/cline",
+  "number": 14719,
+  "kind": "bug",
+  "topic": "ui",
+  "labeled_by": "claude",
+  "topic_v3": "ui"
+ },
+ {
+  "pos": 94,
+  "issue_id": 4328833581,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12194,
+  "kind": "bug",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 95,
+  "issue_id": 4194693394,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12045,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 96,
+  "issue_id": 4266068863,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 12120,
+  "kind": "bug",
+  "topic": "install_auth",
+  "labeled_by": "claude",
+  "topic_v3": "install_auth"
+ },
+ {
+  "pos": 97,
+  "issue_id": 5593194214,
+  "repo": "Aider-AI/aider",
+  "number": 5773,
+  "kind": "bug",
+  "topic": "sandbox_security",
+  "labeled_by": "claude",
+  "topic_v3": "sandbox_security"
+ },
+ {
+  "pos": 98,
+  "issue_id": 4041491309,
+  "repo": "RooCodeInc/Roo-Code",
+  "number": 11894,
+  "kind": "feature",
+  "topic": "integrations",
+  "labeled_by": "claude",
+  "topic_v3": "integrations"
+ },
+ {
+  "pos": 99,
+  "issue_id": 4698380723,
+  "repo": "continuedev/continue",
+  "number": 12824,
+  "kind": "bug",
+  "topic": "models",
+  "labeled_by": "claude",
+  "topic_v3": "models"
+ },
+ {
+  "pos": 100,
+  "issue_id": 4467236231,
+  "repo": "continuedev/continue",
+  "number": 12432,
+  "kind": "bug",
+  "topic": "agent_behavior",
+  "labeled_by": "claude",
+  "topic_v3": "agent_behavior"
+ }
+]
