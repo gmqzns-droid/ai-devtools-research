@@ -23,8 +23,8 @@
 
 ## Материалы
 
-- [Дашборд с результатами](https://claude.ai/artifact/JJw9iduDiMZdx7j1sGKTUQ)
-- [Спека на фичу: самодиагностика песочницы](https://claude.ai/code/artifact/3661c969-7bf9-4999-9ef9-40b466c6090b)
+- [Дашборд с результатами](https://gmqzns-droid.github.io/ai-devtools-research/)
+- [Спека на фичу: самодиагностика песочницы](SPEC.md)
 
 ## Как это устроено
 
@@ -88,5 +88,7 @@ python3 export_labels.py                 # итоговый файл
 | `gold_labels.json` | Ответы для проверочной выборки |
 | `eval_results.json` | Точность по всем проверенным связкам |
 | `labeled_issues.json` | Все 2 699 обращений с итоговой разметкой |
+| `index.html` | Дашборд одной страницей, данные внутри |
+| `SPEC.md` | Спека на фичу |
 
 Проект сделан в паре с ИИ-ассистентом Claude.

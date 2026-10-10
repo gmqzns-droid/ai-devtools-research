@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Жалобы на ИИ-инструменты для кода</title>
+<meta name="description" content="Исследование 2 699 обращений пользователей шести ИИ-инструментов для кода.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Source+Serif+4:wght@400&display=swap">
+<style>
+:root {
+  --page: #f9f9f7; --color-panel: #fcfcfb; --color-fg: #0b0b0b; --color-fg-muted: #52514e; --color-border-line: #e1e0d9;
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --cds-chart-muted: #c3c2b7;
+  --cds-surface-popover: #ffffff; --cds-border: #c3c2b7; --cds-text-secondary: #52514e; --cds-shadow-popover: 0 4px 16px rgba(0,0,0,.14);
+  --font-anthropic-sans: "Golos Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-anthropic-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --cds-font-size-caption: .8125rem; --cds-font-size-body: .9375rem; --cds-font-size-heading: 1.0625rem; --cds-font-size-title: 1.9rem; --cds-font-weight-medium: 600;
+  --cds-gap-xs: .25rem; --cds-gap-sm: .5rem; --cds-gap-md: 1rem; --cds-gap-lg: 1.5rem; --cds-gap-xl: 2rem;
+  --cds-pad-xs: .3rem; --cds-pad-sm: .6rem; --cds-pad-lg: 1.25rem; --cds-radius: 10px; --cds-dur-slow: .3s;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --page: #0d0d0d; --color-panel: #1a1a19; --color-fg: #f0efec; --color-fg-muted: #c3c2b7; --color-border-line: #2c2c2a;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --cds-chart-muted: #4a4a46;
+  --cds-surface-popover: #262624; --cds-border: #383835; --cds-text-secondary: #c3c2b7; --cds-shadow-popover: 0 4px 16px rgba(0,0,0,.5); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --color-panel: #1a1a19; --color-fg: #f0efec; --color-fg-muted: #c3c2b7; --color-border-line: #2c2c2a;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --cds-chart-muted: #4a4a46;
+  --cds-surface-popover: #262624; --cds-border: #383835; --cds-text-secondary: #c3c2b7; --cds-shadow-popover: 0 4px 16px rgba(0,0,0,.5); color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--color-fg); padding-inline: 16px; padding-block: 28px 56px; }
+[hidden] { display: none !important; }
+.ai-foot { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.ai-foot a { color: var(--color-fg); }
+
+.ai-page { position: relative; max-width: 68rem; margin-inline: auto; display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); font-size: var(--cds-font-size-body); }
+.ai-page h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+.ai-page h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+.ai-page p { margin: 0; }
+.ai-head { display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+.ai-takeaway { max-width: 46rem; line-height: 1.5; }
+.ai-note { color: var(--color-fg-muted); max-width: 46rem; line-height: 1.5; }
+.ai-num { font-variant-numeric: tabular-nums; }
+.ai-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--cds-gap-md); }
+.ai-tile, .ai-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+.ai-tile { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+.ai-tile-label { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.ai-tile-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: 2rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.ai-tile-sub { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.ai-card { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
+.ai-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ai-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.ai-swatch { width: 0.7rem; height: 0.7rem; border-radius: 2px; display: inline-block; }
+.ai-bars { display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-height: 6rem; }
+.ai-bar-row { display: grid; grid-template-columns: minmax(5.5rem, 9rem) minmax(0, 1fr) 3.5rem; align-items: center; gap: var(--cds-gap-sm); }
+.ai-bar-row.ai-wide-name { grid-template-columns: minmax(8rem, 15rem) minmax(0, 1fr) 3.5rem; }
+.ai-bar-name { font-size: var(--cds-font-size-caption); min-width: 0; overflow-wrap: anywhere; }
+.ai-bar-val { font-size: var(--cds-font-size-caption); text-align: right; font-variant-numeric: tabular-nums; }
+.ai-bar-slot { min-width: 0; }
+.ai-bar-track { display: flex; gap: 2px; height: 1.25rem; }
+.ai-seg { min-width: 2px; border-radius: 3px; }
+.ai-seg:hover { filter: brightness(1.12); }
+.ai-scroll { overflow-x: auto; }
+.ai-heat { display: grid; gap: 2px; min-width: 34rem; align-items: stretch; min-height: 20rem; }
+.ai-heat-col { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-align: center; padding: 0.25rem 0.15rem; align-self: end; }
+.ai-heat-row { font-size: var(--cds-font-size-caption); padding: 0.4rem 0.5rem 0.4rem 0; display: flex; align-items: center; }
+.ai-heat-cell { position: relative; display: flex; align-items: center; justify-content: center; min-height: 2rem; border-radius: 3px; overflow: hidden; }
+.ai-heat-bg { position: absolute; inset: 0; }
+.ai-heat-txt { position: relative; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.ai-heat-cell.ai-heat-top .ai-heat-txt { font-weight: 700; }
+.ai-heat-cell:hover { outline: 1.5px solid var(--color-fg); outline-offset: -1.5px; }
+.ai-big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.ai-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.ai-table th { text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); padding: 0.4rem 0.75rem 0.4rem 0; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+.ai-table td { padding: 0.45rem 0.75rem 0.45rem 0; border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+.ai-table td.ai-r, .ai-table th.ai-r { text-align: right; padding-right: 1.25rem; padding-left: 0.5rem; }
+.ai-table a { color: var(--color-fg); text-underline-offset: 2px; }
+.ai-table td.ai-title { min-width: 14rem; overflow-wrap: anywhere; }
+.ai-list { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: var(--cds-gap-xs); color: var(--color-fg-muted); max-width: 46rem; line-height: 1.5; }
+.ai-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); max-width: 18rem; font-variant-numeric: tabular-nums; }
+.ai-tip[hidden] { display: none; }
+.ai-tip-head { color: var(--cds-text-secondary); }
+[data-dash-source-state=empty] { color: transparent; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+</head>
+<body>
+
+
+<div class="ai-page">
+  <header class="ai-head" id="summary">
+    <h1>Жалобы на ИИ-инструменты для кода</h1>
+    <p class="ai-takeaway">Разобрано <span class="ai-num" data-source="summary" data-field="total" data-row="0" data-fill="int">—</span> обращений пользователей <span class="ai-num" data-source="summary" data-field="tools" data-row="0" data-fill="int">—</span> открытых инструментов. Людьми и по делу написаны <span class="ai-num" data-source="summary" data-field="human_share" data-row="0" data-fill="pct">—</span> из них. Чаще всего пишут про тему «<span data-source="summary" data-field="top_topic_ru" data-row="0" data-fill="text">—</span>»: <span class="ai-num" data-source="summary" data-field="top_topic_share" data-row="0" data-fill="pct">—</span> осмысленных обращений.</p>
+  </header>
+
+  <section class="ai-tiles" id="totals">
+    <div class="ai-tile"><div class="ai-tile-label">Всего обращений</div><div class="ai-tile-value" data-source="summary" data-field="total" data-row="0" data-fill="int">—</div><div class="ai-tile-sub">выгрузка с GitHub от 10 октября 2026</div></div>
+    <div class="ai-tile"><div class="ai-tile-label">Написаны людьми, по делу</div><div class="ai-tile-value" data-source="summary" data-field="human" data-row="0" data-fill="int">—</div><div class="ai-tile-sub"><span data-source="summary" data-field="human_share" data-row="0" data-fill="pct">—</span> от всех</div></div>
+    <div class="ai-tile"><div class="ai-tile-label">Автоматические отчёты</div><div class="ai-tile-value" data-source="summary" data-field="auto_report" data-row="0" data-fill="int">—</div><div class="ai-tile-sub"><span data-source="summary" data-field="auto_share" data-row="0" data-fill="pct">—</span> от всех</div></div>
+    <div class="ai-tile"><div class="ai-tile-label">Мусор</div><div class="ai-tile-value" data-source="summary" data-field="junk" data-row="0" data-fill="int">—</div><div class="ai-tile-sub"><span data-source="summary" data-field="junk_share" data-row="0" data-fill="pct">—</span> от всех</div></div>
+  </section>
+
+  <section class="ai-card" id="topics">
+    <h2>На что жалуются пользователи каждого инструмента</h2>
+    <p class="ai-note">Доля темы среди осмысленных обращений инструмента. Жирным выделена главная тема каждого. Сравнивать инструменты можно только по долям: периоды выгрузки у них разные.</p>
+    <div class="ai-scroll"><div class="ai-heat" id="ai-heat" data-source="topics"></div></div>
+  </section>
+
+  <div class="ai-grid">
+    <section class="ai-card" id="codex">
+      <h2>Codex: один сбой на Windows занимает заметную часть жалоб</h2>
+      <div class="ai-big" data-source="summary" data-field="codex_win_sandbox_share" data-row="0" data-fill="pct">—</div>
+      <p class="ai-note"><span class="ai-num" data-source="summary" data-field="codex_win_sandbox" data-row="0" data-fill="int">—</span> из <span class="ai-num" data-source="summary" data-field="codex_total" data-row="0" data-fill="int">—</span> обращений за <span class="ai-num" data-source="summary" data-field="codex_days" data-row="0" data-fill="int">—</span> дня описывают одно и то же: песочница на Windows не может настроиться, потому что её файлы заняты, и команды перестают выполняться. Найдено поиском по тексту ошибки, без модели.</p>
+      <div class="ai-legend" id="ai-codex-legend"><span><i class="ai-swatch" data-color="1"></i>Сбой песочницы на Windows</span><span><i class="ai-swatch" data-color="muted"></i>Остальные обращения</span></div>
+      <div class="ai-bars" id="ai-codex" data-source="codex_windows"></div>
+    </section>
+
+    <section class="ai-card" id="composition">
+      <h2>Кто пишет обращения: люди или программы</h2>
+      <p class="ai-note">Aider и Continue сами создают обращение при сбое. Такие отчёты и мусор стоит отделять до анализа, иначе они искажают картину.</p>
+      <div class="ai-legend" id="ai-comp-legend"><span><i class="ai-swatch" data-color="0"></i>Люди, по делу</span><span><i class="ai-swatch" data-color="1"></i>Автоматические отчёты</span><span><i class="ai-swatch" data-color="2"></i>Мусор и нераспознанное</span></div>
+      <div class="ai-bars" id="ai-comp" data-source="composition"></div>
+    </section>
+  </div>
+
+  <section class="ai-card" id="agent">
+    <h2>Насколько можно верить разметке</h2>
+    <p class="ai-note">Темы ставил ИИ-агент. Его проверяли на <span class="ai-num" data-source="summary" data-field="eval_n" data-row="0" data-fill="int">—</span> обращениях с заранее известными ответами. Доля верно определённых тем выросла с <span class="ai-num" data-source="summary" data-field="topic_acc_first" data-row="0" data-fill="pct">—</span> до <span class="ai-num" data-source="summary" data-field="topic_acc_best" data-row="0" data-fill="pct">—</span>. Больше всего дала замена модели на более сильную, правки инструкции дали меньше. Тип обращения лучшая связка определяет верно в <span class="ai-num" data-source="summary" data-field="kind_acc_best" data-row="0" data-fill="pct">—</span> случаев.</p>
+    <div class="ai-bars" id="ai-eval" data-source="agent_eval"></div>
+  </section>
+
+  <section class="ai-card" id="examples">
+    <h2>Самые обсуждаемые обращения в главной теме каждого инструмента</h2>
+    <div class="ai-scroll">
+      <table class="ai-table" data-source="examples" data-row-key="ref">
+        <thead><tr><th data-field="ref">Обращение</th><th data-field="topic_ru">Тема</th><th data-field="title">Заголовок</th><th class="ai-r" data-field="comments">Комментарии</th><th class="ai-r" data-field="thumbs_up">Лайки</th><th data-field="state">Статус</th></tr></thead>
+        <tbody id="ai-examples"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ai-card" id="method">
+    <h2>Что нужно знать о данных</h2>
+    <div class="ai-scroll">
+      <table class="ai-table" data-source="composition" data-row-key="tool">
+        <thead><tr><th data-field="tool">Инструмент</th><th class="ai-r" data-field="total">Обращений</th><th data-field="first_day">Первое</th><th data-field="last_day">Последнее</th><th class="ai-r" data-field="days">Дней</th><th class="ai-r" data-field="per_day">В день</th></tr></thead>
+        <tbody id="ai-periods"></tbody>
+      </table>
+    </div>
+    <ul class="ai-list">
+      <li>По каждому инструменту взяты последние обращения, поэтому периоды разные: от нескольких дней до нескольких месяцев.</li>
+      <li>Тему и тип ставила модель GigaChat по инструкции. Она ошибается, поэтому доли по темам приблизительные, а близкие значения различать не стоит.</li>
+      <li>Автоматические отчёты определены правилом по заголовку, сбой песочницы Codex найден поиском по тексту ошибки.</li>
+    </ul>
+  </section>
+
+
+  <p class="ai-foot">Код, данные и описание метода: <a href="https://github.com/gmqzns-droid/ai-devtools-research">github.com/gmqzns-droid/ai-devtools-research</a></p>
+  <div class="ai-tip" hidden></div>
+</div>
+
+
+<script>
+const DATA = {"summary": [{"total": "2699", "tools": "6", "human": "2080", "human_share": "0.7707", "auto_report": "512", "auto_share": "0.1897", "junk": "98", "junk_share": "0.0363", "unparsed": "9", "by_rule": "512", "by_model": "2187", "top_topic_ru": "Интеграции", "top_topic_n": "406", "top_topic_share": "0.1952", "codex_total": "784", "codex_win_sandbox": "177", "codex_win_sandbox_share": "0.2258", "codex_windows": "475", "codex_windows_share": "0.6059", "codex_days": "3", "eval_n": "100", "topic_acc_first": "0.44", "topic_acc_best": "0.77", "kind_acc_best": "0.94", "both_acc_best": "0.74", "best_model": "GigaChat-2-Max"}], "composition": [{"tool": "Codex", "total": "784", "human": "771", "auto_report": "0", "junk": "12", "unparsed": "1", "bug": "711", "feature": "54", "question": "6", "first_day": "2026-10-07", "last_day": "2026-10-09", "days": "3", "per_day": "261.3"}, {"tool": "Cline", "total": "321", "human": "320", "auto_report": "0", "junk": "1", "unparsed": "0", "bug": "291", "feature": "28", "question": "1", "first_day": "2026-09-09", "last_day": "2026-10-09", "days": "31", "per_day": "10.4"}, {"tool": "Gemini CLI", "total": "308", "human": "275", "auto_report": "0", "junk": "32", "unparsed": "1", "bug": "247", "feature": "23", "question": "5", "first_day": "2026-08-11", "last_day": "2026-10-09", "days": "60", "per_day": "5.1"}, {"tool": "Roo Code", "total": "356", "human": "345", "auto_report": "0", "junk": "10", "unparsed": "1", "bug": "184", "feature": "156", "question": "5", "first_day": "2026-02-13", "last_day": "2026-05-15", "days": "92", "per_day": "3.9"}, {"tool": "Continue", "total": "397", "human": "209", "auto_report": "166", "junk": "21", "unparsed": "1", "bug": "152", "feature": "44", "question": "13", "first_day": "2026-05-13", "last_day": "2026-10-09", "days": "150", "per_day": "2.6"}, {"tool": "Aider", "total": "533", "human": "160", "auto_report": "346", "junk": "22", "unparsed": "5", "bug": "89", "feature": "55", "question": "16", "first_day": "2026-03-08", "last_day": "2026-10-09", "days": "216", "per_day": "2.5"}], "topics": [{"tool": "Codex", "topic": "install_auth", "topic_ru": "Установка и вход", "n": "31", "tool_total": "771", "share": "0.0402"}, {"tool": "Codex", "topic": "models", "topic_ru": "Модели", "n": "24", "tool_total": "771", "share": "0.0311"}, {"tool": "Codex", "topic": "agent_behavior", "topic_ru": "Поведение агента", "n": "45", "tool_total": "771", "share": "0.0584"}, {"tool": "Codex", "topic": "ui", "topic_ru": "Интерфейс", "n": "159", "tool_total": "771", "share": "0.2062"}, {"tool": "Codex", "topic": "stability", "topic_ru": "Стабильность", "n": "135", "tool_total": "771", "share": "0.1751"}, {"tool": "Codex", "topic": "sandbox_security", "topic_ru": "Песочница и безопасность", "n": "172", "tool_total": "771", "share": "0.2231"}, {"tool": "Codex", "topic": "integrations", "topic_ru": "Интеграции", "n": "142", "tool_total": "771", "share": "0.1842"}, {"tool": "Codex", "topic": "context_sessions", "topic_ru": "Контекст и сессии", "n": "26", "tool_total": "771", "share": "0.0337"}, {"tool": "Codex", "topic": "config", "topic_ru": "Настройки", "n": "10", "tool_total": "771", "share": "0.013"}, {"tool": "Codex", "topic": "billing_limits", "topic_ru": "Оплата и лимиты", "n": "22", "tool_total": "771", "share": "0.0285"}, {"tool": "Codex", "topic": "docs", "topic_ru": "Документация", "n": "5", "tool_total": "771", "share": "0.0065"}, {"tool": "Codex", "topic": "other", "topic_ru": "Другое", "n": "0", "tool_total": "771", "share": "0.0"}, {"tool": "Cline", "topic": "install_auth", "topic_ru": "Установка и вход", "n": "41", "tool_total": "320", "share": "0.1281"}, {"tool": "Cline", "topic": "models", "topic_ru": "Модели", "n": "26", "tool_total": "320", "share": "0.0813"}, {"tool": "Cline", "topic": "agent_behavior", "topic_ru": "Поведение агента", "n": "16", "tool_total": "320", "share": "0.05"}, {"tool": "Cline", "topic": "ui", "topic_ru": "Интерфейс", "n": "77", "tool_total": "320", "share": "0.2406"}, {"tool": "Cline", "topic": "stability", "topic_ru": "Стабильность", "n": "37", "tool_total": "320", "share": "0.1156"}, {"tool": "Cline", "topic": "sandbox_security", "topic_ru": "Песочница и безопасность", "n": "5", "tool_total": "320", "share": "0.0156"}, {"tool": "Cline", "topic": "integrations", "topic_ru": "Интеграции", "n": "68", "tool_total": "320", "share": "0.2125"}, {"tool": "Cline", "topic": "context_sessions", "topic_ru": "Контекст и сессии", "n": "21", "tool_total": "320", "share": "0.0656"}, {"tool": "Cline", "topic": "config", "topic_ru": "Настройки", "n": "14", "tool_total": "320", "share": "0.0437"}, {"tool": "Cline", "topic": "billing_limits", "topic_ru": "Оплата и лимиты", "n": "9", "tool_total": "320", "share": "0.0281"}, {"tool": "Cline", "topic": "docs", "topic_ru": "Документация", "n": "5", "tool_total": "320", "share": "0.0156"}, {"tool": "Cline", "topic": "other", "topic_ru": "Другое", "n": "1", "tool_total": "320", "share": "0.0031"}, {"tool": "Gemini CLI", "topic": "install_auth", "topic_ru": "Установка и вход", "n": "31", "tool_total": "275", "share": "0.1127"}, {"tool": "Gemini CLI", "topic": "models", "topic_ru": "Модели", "n": "21", "tool_total": "275", "share": "0.0764"}, {"tool": "Gemini CLI", "topic": "agent_behavior", "topic_ru": "Поведение агента", "n": "32", "tool_total": "275", "share": "0.1164"}, {"tool": "Gemini CLI", "topic": "ui", "topic_ru": "Интерфейс", "n": "26", "tool_total": "275", "share": "0.0945"}, {"tool": "Gemini CLI", "topic": "stability", "topic_ru": "Стабильность", "n": "26", "tool_total": "275", "share": "0.0945"}, {"tool": "Gemini CLI", "topic": "sandbox_security", "topic_ru": "Песочница и безопасность", "n": "39", "tool_total": "275", "share": "0.1418"}, {"tool": "Gemini CLI", "topic": "integrations", "topic_ru": "Интеграции", "n": "58", "tool_total": "275", "share": "0.2109"}, {"tool": "Gemini CLI", "topic": "context_sessions", "topic_ru": "Контекст и сессии", "n": "12", "tool_total": "275", "share": "0.0436"}, {"tool": "Gemini CLI", "topic": "config", "topic_ru": "Настройки", "n": "16", "tool_total": "275", "share": "0.0582"}, {"tool": "Gemini CLI", "topic": "billing_limits", "topic_ru": "Оплата и лимиты", "n": "3", "tool_total": "275", "share": "0.0109"}, {"tool": "Gemini CLI", "topic": "docs", "topic_ru": "Документация", "n": "10", "tool_total": "275", "share": "0.0364"}, {"tool": "Gemini CLI", "topic": "other", "topic_ru": "Другое", "n": "1", "tool_total": "275", "share": "0.0036"}, {"tool": "Roo Code", "topic": "install_auth", "topic_ru": "Установка и вход", "n": "7", "tool_total": "345", "share": "0.0203"}, {"tool": "Roo Code", "topic": "models", "topic_ru": "Модели", "n": "88", "tool_total": "345", "share": "0.2551"}, {"tool": "Roo Code", "topic": "agent_behavior", "topic_ru": "Поведение агента", "n": "34", "tool_total": "345", "share": "0.0986"}, {"tool": "Roo Code", "topic": "ui", "topic_ru": "Интерфейс", "n": "73", "tool_total": "345", "share": "0.2116"}, {"tool": "Roo Code", "topic": "stability", "topic_ru": "Стабильность", "n": "11", "tool_total": "345", "share": "0.0319"}, {"tool": "Roo Code", "topic": "sandbox_security", "topic_ru": "Песочница и безопасность", "n": "8", "tool_total": "345", "share": "0.0232"}, {"tool": "Roo Code", "topic": "integrations", "topic_ru": "Интеграции", "n": "76", "tool_total": "345", "share": "0.2203"}, {"tool": "Roo Code", "topic": "context_sessions", "topic_ru": "Контекст и сессии", "n": "13", "tool_total": "345", "share": "0.0377"}, {"tool": "Roo Code", "topic": "config", "topic_ru": "Настройки", "n": "25", "tool_total": "345", "share": "0.0725"}, {"tool": "Roo Code", "topic": "billing_limits", "topic_ru": "Оплата и лимиты", "n": "3", "tool_total": "345", "share": "0.0087"}, {"tool": "Roo Code", "topic": "docs", "topic_ru": "Документация", "n": "3", "tool_total": "345", "share": "0.0087"}, {"tool": "Roo Code", "topic": "other", "topic_ru": "Другое", "n": "4", "tool_total": "345", "share": "0.0116"}, {"tool": "Continue", "topic": "install_auth", "topic_ru": "Установка и вход", "n": "4", "tool_total": "209", "share": "0.0191"}, {"tool": "Continue", "topic": "models", "topic_ru": "Модели", "n": "29", "tool_total": "209", "share": "0.1388"}, {"tool": "Continue", "topic": "agent_behavior", "topic_ru": "Поведение агента", "n": "26", "tool_total": "209", "share": "0.1244"}, {"tool": "Continue", "topic": "ui", "topic_ru": "Интерфейс", "n": "28", "tool_total": "209", "share": "0.134"}, {"tool": "Continue", "topic": "stability", "topic_ru": "Стабильность", "n": "14", "tool_total": "209", "share": "0.067"}, {"tool": "Continue", "topic": "sandbox_security", "topic_ru": "Песочница и безопасность", "n": "9", "tool_total": "209", "share": "0.0431"}, {"tool": "Continue", "topic": "integrations", "topic_ru": "Интеграции", "n": "43", "tool_total": "209", "share": "0.2057"}, {"tool": "Continue", "topic": "context_sessions", "topic_ru": "Контекст и сессии", "n": "2", "tool_total": "209", "share": "0.0096"}, {"tool": "Continue", "topic": "config", "topic_ru": "Настройки", "n": "12", "tool_total": "209", "share": "0.0574"}, {"tool": "Continue", "topic": "billing_limits", "topic_ru": "Оплата и лимиты", "n": "7", "tool_total": "209", "share": "0.0335"}, {"tool": "Continue", "topic": "docs", "topic_ru": "Документация", "n": "32", "tool_total": "209", "share": "0.1531"}, {"tool": "Continue", "topic": "other", "topic_ru": "Другое", "n": "3", "tool_total": "209", "share": "0.0144"}, {"tool": "Aider", "topic": "install_auth", "topic_ru": "Установка и вход", "n": "13", "tool_total": "160", "share": "0.0813"}, {"tool": "Aider", "topic": "models", "topic_ru": "Модели", "n": "18", "tool_total": "160", "share": "0.1125"}, {"tool": "Aider", "topic": "agent_behavior", "topic_ru": "Поведение агента", "n": "31", "tool_total": "160", "share": "0.1938"}, {"tool": "Aider", "topic": "ui", "topic_ru": "Интерфейс", "n": "6", "tool_total": "160", "share": "0.0375"}, {"tool": "Aider", "topic": "stability", "topic_ru": "Стабильность", "n": "10", "tool_total": "160", "share": "0.0625"}, {"tool": "Aider", "topic": "sandbox_security", "topic_ru": "Песочница и безопасность", "n": "23", "tool_total": "160", "share": "0.1437"}, {"tool": "Aider", "topic": "integrations", "topic_ru": "Интеграции", "n": "19", "tool_total": "160", "share": "0.1187"}, {"tool": "Aider", "topic": "context_sessions", "topic_ru": "Контекст и сессии", "n": "5", "tool_total": "160", "share": "0.0312"}, {"tool": "Aider", "topic": "config", "topic_ru": "Настройки", "n": "13", "tool_total": "160", "share": "0.0813"}, {"tool": "Aider", "topic": "billing_limits", "topic_ru": "Оплата и лимиты", "n": "1", "tool_total": "160", "share": "0.0063"}, {"tool": "Aider", "topic": "docs", "topic_ru": "Документация", "n": "13", "tool_total": "160", "share": "0.0813"}, {"tool": "Aider", "topic": "other", "topic_ru": "Другое", "n": "8", "tool_total": "160", "share": "0.05"}], "agent_eval": [{"step": "1", "label": "Первая инструкция, модель Lite", "prompt": "v1", "model": "GigaChat-2", "n": "100", "kind_acc": "0.85", "topic_acc": "0.44", "both_acc": "0.4"}, {"step": "2", "label": "Вторая инструкция, модель Lite", "prompt": "v2", "model": "GigaChat-2", "n": "100", "kind_acc": "0.81", "topic_acc": "0.53", "both_acc": "0.48"}, {"step": "3", "label": "Вторая инструкция, модель Pro", "prompt": "v2", "model": "GigaChat-2-Pro", "n": "100", "kind_acc": "0.88", "topic_acc": "0.69", "both_acc": "0.62"}, {"step": "4", "label": "Третья инструкция, модель Max", "prompt": "v3", "model": "GigaChat-2-Max", "n": "100", "kind_acc": "0.94", "topic_acc": "0.77", "both_acc": "0.74"}], "codex_windows": [{"day": "2026-10-07", "total": "46", "win_sandbox": "10", "other": "36"}, {"day": "2026-10-08", "total": "387", "win_sandbox": "90", "other": "297"}, {"day": "2026-10-09", "total": "351", "win_sandbox": "77", "other": "274"}], "examples": [{"ref": "Codex #51932", "tool": "Codex", "topic_ru": "Песочница и безопасность", "title": "Windows App 26.1002.7124.0: sandbox runtime read/execute validation fails with sharing violation", "url": "https://github.com/openai/codex/issues/51932", "comments": "26", "thumbs_up": "2", "state": "открыто"}, {"ref": "Codex #51965", "tool": "Codex", "topic_ru": "Песочница и безопасность", "title": "Windows 26.1002.52244: sandbox ACL refresh fails on running node_repl.exe (error 32), blocking browser and shell", "url": "https://github.com/openai/codex/issues/51965", "comments": "11", "thumbs_up": "4", "state": "открыто"}, {"ref": "Codex #51969", "tool": "Codex", "topic_ru": "Песочница и безопасность", "title": "Windows sandbox setup blocked by running bundled node_repl.exe / Swift DLL (os error 32)", "url": "https://github.com/openai/codex/issues/51969", "comments": "12", "thumbs_up": "3", "state": "открыто"}, {"ref": "Cline #14250", "tool": "Cline", "topic_ru": "Интерфейс", "title": "“Tauri invoke failed for get_desktop_backend_endpoint: desktop backend endpoint not ready”", "url": "https://github.com/cline/cline/issues/14250", "comments": "17", "thumbs_up": "1", "state": "открыто"}, {"ref": "Cline #14219", "tool": "Cline", "topic_ru": "Интерфейс", "title": "Configuring Providers, missing API key and Connect Button", "url": "https://github.com/cline/cline/issues/14219", "comments": "5", "thumbs_up": "3", "state": "открыто"}, {"ref": "Cline #14067", "tool": "Cline", "topic_ru": "Интерфейс", "title": "[Bug] Experimental / YOLO Mode disappears from settings as soon as a workspace/folder is opened", "url": "https://github.com/cline/cline/issues/14067", "comments": "5", "thumbs_up": "0", "state": "закрыто"}, {"ref": "Gemini CLI #29152", "tool": "Gemini CLI", "topic_ru": "Интеграции", "title": "User-level git config is ignored after pull request #28792", "url": "https://github.com/google-gemini/gemini-cli/issues/29152", "comments": "2", "thumbs_up": "4", "state": "открыто"}, {"ref": "Gemini CLI #28928", "tool": "Gemini CLI", "topic_ru": "Интеграции", "title": "Git command execution fails with `cannot spawn : No such file or directory` due to empty `diff.external` configuration", "url": "https://github.com/google-gemini/gemini-cli/issues/28928", "comments": "10", "thumbs_up": "1", "state": "закрыто"}, {"ref": "Gemini CLI #29526", "tool": "Gemini CLI", "topic_ru": "Интеграции", "title": "MCP tool answering in `structuredContent` is a success with an empty result", "url": "https://github.com/google-gemini/gemini-cli/issues/29526", "comments": "11", "thumbs_up": "0", "state": "открыто"}, {"ref": "Roo Code #12024", "tool": "Roo Code", "topic_ru": "Модели", "title": "[ENHANCEMENT] Add support for GLM-5.1 via Z.ai provider", "url": "https://github.com/RooCodeInc/Roo-Code/issues/12024", "comments": "18", "thumbs_up": "8", "state": "открыто"}, {"ref": "Roo Code #12237", "tool": "Roo Code", "topic_ru": "Модели", "title": "[BUG] Selected model should never change unless the end-user changes it (i.e. when switching modes)", "url": "https://github.com/RooCodeInc/Roo-Code/issues/12237", "comments": "21", "thumbs_up": "0", "state": "открыто"}, {"ref": "Roo Code #12067", "tool": "Roo Code", "topic_ru": "Модели", "title": "[BUG] Qwen Bad Request 400", "url": "https://github.com/RooCodeInc/Roo-Code/issues/12067", "comments": "8", "thumbs_up": "2", "state": "закрыто"}, {"ref": "Continue #13185", "tool": "Continue", "topic_ru": "Интеграции", "title": "JetBrains plugin fails to load in 2026.2 IDEs with NoClassDefFoundError: com/intellij/ui/jcef/JBCefApp", "url": "https://github.com/continuedev/continue/issues/13185", "comments": "10", "thumbs_up": "3", "state": "открыто"}, {"ref": "Continue #12492", "tool": "Continue", "topic_ru": "Интеграции", "title": "Integration: would a runtime governance proxy in front of MCP servers be in scope for third-party integrations?", "url": "https://github.com/continuedev/continue/issues/12492", "comments": "6", "thumbs_up": "0", "state": "открыто"}, {"ref": "Continue #13000", "tool": "Continue", "topic_ru": "Интеграции", "title": "tool calling (re)design", "url": "https://github.com/continuedev/continue/issues/13000", "comments": "5", "thumbs_up": "0", "state": "открыто"}, {"ref": "Aider #5620", "tool": "Aider", "topic_ru": "Поведение агента", "title": "Uncaught ValueError in path_in_repo()/is_dirty() when an edit block references an absolute path (session crash)", "url": "https://github.com/Aider-AI/aider/issues/5620", "comments": "6", "thumbs_up": "0", "state": "открыто"}, {"ref": "Aider #5459", "tool": "Aider", "topic_ru": "Поведение агента", "title": "Exception type too broad in error handling", "url": "https://github.com/Aider-AI/aider/issues/5459", "comments": "1", "thumbs_up": "1", "state": "открыто"}, {"ref": "Aider #5089", "tool": "Aider", "topic_ru": "Поведение агента", "title": "How to go from ask> (chat) context to /code with diff enabled", "url": "https://github.com/Aider-AI/aider/issues/5089", "comments": "3", "thumbs_up": "0", "state": "открыто"}]};
+const d3 = {
+  sum: (a, f) => a.reduce((s, x) => s + f(x), 0),
+  max: (a, f) => a.reduce((m, x) => Math.max(m, f(x)), -Infinity),
+  rollup: (a, reduce, key) => { const g = new Map(); a.forEach((x) => { const k = key(x); if (!g.has(k)) g.set(k, []); g.get(k).push(x); }); return new Map([...g].map(([k, v]) => [k, reduce(v)])); },
+  utcFormat: () => (d) => String(d.getUTCDate()).padStart(2, '0') + '.' + String(d.getUTCMonth() + 1).padStart(2, '0'),
+};
+const dash = { colors: ['var(--series-1)', 'var(--series-2)', 'var(--series-3)'],
+  data: (id) => ({ status: 'ok', data: DATA[id] || [] }), onData: (fn) => fn() };
+
+const page = document.querySelector('.ai-page');
+const tip = page.querySelector('.ai-tip');
+const fmtInt = new Intl.NumberFormat('ru-RU');
+const fmtPct = (x) => Math.round(Number(x) * 100) + '%';
+const byId = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const colorOf = (key) => key === 'muted' ? 'var(--cds-chart-muted)' : dash.colors[Number(key)];
+
+function showTip(event, lines) {
+  tip.replaceChildren(...lines.map((t, i) => el('div', i === 0 ? 'ai-tip-head' : '', t)));
+  tip.hidden = false;
+  const box = page.getBoundingClientRect();
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = event.clientX - box.left + 12, y = event.clientY - box.top + 12;
+  if (x + w > box.width) x = Math.max(0, event.clientX - box.left - w - 12);
+  if (y + h > box.height) y = Math.max(0, event.clientY - box.top - h - 12);
+  tip.style.left = x + 'px';
+  tip.style.top = y + 'px';
+}
+function hover(node, linesFn) {
+  node.addEventListener('pointermove', (e) => showTip(e, linesFn()));
+  node.addEventListener('pointerleave', () => { tip.hidden = true; });
+  node.setAttribute('role', 'img');
+  node.setAttribute('aria-label', linesFn().join('. '));
+}
+const rowsOf = (id) => { const d = dash.data(id); return d.status === 'ok' && Array.isArray(d.data) && d.data.length ? d.data : null; };
+
+page.querySelectorAll('.ai-swatch').forEach((s) => { s.style.background = colorOf(s.dataset.color); });
+
+function fillSummary() {
+  const d = dash.data('summary');
+  const s = d.status === 'ok' && Array.isArray(d.data) ? d.data[0] : null;
+  page.querySelectorAll('[data-source="summary"][data-field]').forEach((node) => {
+    node.classList.toggle('dash-skeleton', d.status === 'loading');
+    const v = s ? s[node.dataset.field] : null;
+    if (v == null || v === '') { node.textContent = '—'; return; }
+    node.textContent = node.dataset.fill === 'pct' ? fmtPct(v) : node.dataset.fill === 'int' ? fmtInt.format(Number(v)) : String(v);
+  });
+}
+
+function barRow(name, wide) {
+  const row = el('div', 'ai-bar-row' + (wide ? ' ai-wide-name' : ''));
+  const slot = el('div', 'ai-bar-slot');
+  const track = el('div', 'ai-bar-track');
+  const val = el('div', 'ai-bar-val');
+  slot.append(track);
+  row.append(el('div', 'ai-bar-name', name), slot, val);
+  return { row, track, val };
+}
+
+function drawComposition() {
+  const box = byId('ai-comp'), body = byId('ai-periods');
+  const rows = rowsOf('composition');
+  box.classList.toggle('dash-skeleton', dash.data('composition').status === 'loading');
+  box.replaceChildren(); body.replaceChildren();
+  if (!rows) return;
+  const parts = [['human', 'Люди, по делу', '0'], ['auto_report', 'Автоматические отчёты', '1'], ['junk', 'Мусор и нераспознанное', '2']];
+  rows.forEach((r) => {
+    const total = Number(r.total);
+    const b = barRow(r.tool, false);
+    parts.forEach(([key, label, color]) => {
+      const n = Number(r[key]) + (key === 'junk' ? Number(r.unparsed) : 0);
+      if (!n) return;
+      const seg = el('div', 'ai-seg');
+      seg.style.flex = n + ' 1 0';
+      seg.style.background = colorOf(color);
+      hover(seg, () => [r.tool, label + ': ' + fmtInt.format(n) + ' из ' + fmtInt.format(total) + ' (' + fmtPct(n / total) + ')']);
+      b.track.append(seg);
+    });
+    b.val.textContent = fmtInt.format(total);
+    box.append(b.row);
+
+    const tr = el('tr');
+    tr.dataset.key = r.tool;
+    tr.append(el('td', '', r.tool), el('td', 'ai-r', fmtInt.format(total)), el('td', '', r.first_day), el('td', '', r.last_day), el('td', 'ai-r', fmtInt.format(Number(r.days))), el('td', 'ai-r', String(r.per_day)));
+    body.append(tr);
+  });
+}
+
+function drawHeat() {
+  const box = byId('ai-heat');
+  const rows = rowsOf('topics');
+  box.classList.toggle('dash-skeleton', dash.data('topics').status === 'loading');
+  box.replaceChildren();
+  if (!rows) return;
+  const tools = [...new Set(rows.map((r) => r.tool))];
+  const totals = d3.rollup(rows, (v) => d3.sum(v, (d) => Number(d.n)), (d) => d.topic);
+  const topics = [...new Set(rows.map((r) => r.topic))].sort((a, b) => totals.get(b) - totals.get(a));
+  const nameOf = new Map(rows.map((r) => [r.topic, r.topic_ru]));
+  const cellOf = new Map(rows.map((r) => [r.tool + '|' + r.topic, r]));
+  const max = d3.max(rows, (r) => Number(r.share)) || 1;
+  const topOf = new Map(tools.map((t) => [t, d3.max(rows.filter((r) => r.tool === t), (r) => Number(r.share))]));
+  box.style.gridTemplateColumns = 'minmax(9.5rem, 1.7fr) repeat(' + tools.length + ', minmax(3.4rem, 1fr))';
+  box.append(el('div', 'ai-heat-col', ''));
+  tools.forEach((t) => box.append(el('div', 'ai-heat-col', t)));
+  topics.forEach((tp) => {
+    box.append(el('div', 'ai-heat-row', nameOf.get(tp)));
+    tools.forEach((t) => {
+      const r = cellOf.get(t + '|' + tp);
+      const share = r ? Number(r.share) : 0;
+      const c = el('div', 'ai-heat-cell' + (share > 0 && share === topOf.get(t) ? ' ai-heat-top' : ''));
+      const bg = el('span', 'ai-heat-bg');
+      bg.style.background = colorOf('0');
+      bg.style.opacity = String(0.04 + 0.5 * share / max);
+      c.append(bg, el('span', 'ai-heat-txt', share >= 0.005 ? fmtPct(share) : '·'));
+      if (r) hover(c, () => [t + ' · ' + nameOf.get(tp), fmtInt.format(Number(r.n)) + ' из ' + fmtInt.format(Number(r.tool_total)) + ' обращений (' + fmtPct(share) + ')']);
+      box.append(c);
+    });
+  });
+}
+
+function drawCodex() {
+  const box = byId('ai-codex');
+  const rows = rowsOf('codex_windows');
+  box.classList.toggle('dash-skeleton', dash.data('codex_windows').status === 'loading');
+  box.replaceChildren();
+  if (!rows) return;
+  const max = d3.max(rows, (r) => Number(r.total)) || 1;
+  const dayFmt = d3.utcFormat('%d.%m');
+  rows.forEach((r) => {
+    const total = Number(r.total), win = Number(r.win_sandbox), other = Number(r.other);
+    const label = dayFmt(new Date(r.day + 'T00:00:00Z'));
+    const b = barRow(label, false);
+    b.track.style.width = (total / max * 100) + '%';
+    [[win, 'Сбой песочницы на Windows', '1'], [other, 'Остальные обращения', 'muted']].forEach(([n, name, color]) => {
+      if (!n) return;
+      const seg = el('div', 'ai-seg');
+      seg.style.flex = n + ' 1 0';
+      seg.style.background = colorOf(color);
+      hover(seg, () => [label, name + ': ' + fmtInt.format(n) + ' из ' + fmtInt.format(total) + ' (' + fmtPct(n / total) + ')']);
+      b.track.append(seg);
+    });
+    b.val.textContent = fmtInt.format(total);
+    box.append(b.row);
+  });
+}
+
+function drawEval() {
+  const box = byId('ai-eval');
+  const rows = rowsOf('agent_eval');
+  box.classList.toggle('dash-skeleton', dash.data('agent_eval').status === 'loading');
+  box.replaceChildren();
+  if (!rows) return;
+  rows.forEach((r, i) => {
+    const acc = Number(r.topic_acc);
+    const b = barRow(r.label, true);
+    const seg = el('div', 'ai-seg');
+    seg.style.flex = '0 0 ' + (acc * 100) + '%';
+    seg.style.background = i === rows.length - 1 ? colorOf('0') : colorOf('muted');
+    hover(seg, () => [r.label, 'Тема верна: ' + fmtPct(acc), 'Тип верен: ' + fmtPct(r.kind_acc), 'Оба верны: ' + fmtPct(r.both_acc)]);
+    b.track.append(seg);
+    b.val.textContent = fmtPct(acc);
+    box.append(b.row);
+  });
+}
+
+function drawExamples() {
+  const body = byId('ai-examples');
+  const rows = rowsOf('examples');
+  body.replaceChildren();
+  if (!rows) return;
+  rows.forEach((r) => {
+    const tr = el('tr');
+    tr.dataset.key = r.ref;
+    const title = el('td', 'ai-title');
+    const a = el('a', '', r.title);
+    if (/^https:\/\/github\.com\//.test(r.url)) { a.href = r.url; a.target = '_blank'; a.rel = 'noopener'; }
+    title.append(a);
+    tr.append(el('td', '', r.ref), el('td', '', r.topic_ru), title, el('td', 'ai-r', fmtInt.format(Number(r.comments))), el('td', 'ai-r', fmtInt.format(Number(r.thumbs_up))), el('td', '', r.state));
+    body.append(tr);
+  });
+}
+
+dash.onData(() => {
+  tip.hidden = true;
+  [fillSummary, drawHeat, drawCodex, drawComposition, drawEval, drawExamples].forEach((fn) => {
+    try { fn(); } catch (e) { console.error(e); }
+  });
+});
+</script>
+</body>
+</html>
