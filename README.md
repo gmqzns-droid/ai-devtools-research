@@ -23,7 +23,7 @@
 
 ## Материалы
 
-- [Дашборд с результатами](https://gmqzns-droid.github.io/ai-devtools-research/)
+- [Дашборд с результатами](https://mostiev.github.io/ai-devtools-research/)
 - [Спека на фичу: самодиагностика песочницы](SPEC.md)
 
 ## Как это устроено
